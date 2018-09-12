@@ -45,8 +45,8 @@ QuestionsRepository questionsRepository;
         return workbook;
     }
 
-    public Sheet sheet () {
-        Sheet sheet = workbook("workbook1.xls").getSheetAt(0);
+    public Sheet sheet (String filename) {
+        Sheet sheet = workbook(filename).getSheetAt(0);
         return sheet;
     }
 
@@ -92,10 +92,10 @@ return list;
 
 
 
-    public List<String> readExcel() throws IOException, InvalidFormatException {
+    public List<String> readExcel(String fileName) throws IOException, InvalidFormatException {
 
 
-        Sheet sheet = sheet();
+        Sheet sheet = sheet(fileName);
 
         Iterator<Row> rowIterator = sheet.rowIterator();
 

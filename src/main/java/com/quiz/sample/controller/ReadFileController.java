@@ -8,18 +8,18 @@ import com.quiz.sample.service.ExcelSave;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.aspectj.weaver.patterns.TypePatternQuestions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("")
-public class HomeController {
+@RequestMapping("/readfile")
+public class ReadFileController {
 
     Questions questions = new Questions();
 
@@ -34,24 +34,23 @@ public class HomeController {
     ExcelSave excelSave;
 
 
-    @GetMapping
+
+    @GetMapping("")
+    public String form() {
+        return "excelFileReader";
+    }
+
+    @PostMapping("")
     @ResponseBody
-    public String questionForm() throws IOException, InvalidFormatException{
+    public String readExcelFile(@RequestParam String fileName) throws IOException, InvalidFormatException{
 
 
         try {
 
 
-            List<String> list=  excelReader.readExcel();
+            List<String> list=  excelReader.readExcel(fileName);
 
             excelSave.saveExcel(list);
-
-/*            String [] compared = list.get(1).split(";");
-
-            questions.setQuestions(compared[0]);
-            questions.setAnswer(compared[1]);
-
-            questionsRepository.save(questions);*/
 
             return "Zapisanie zakończone sukcesem";
 
