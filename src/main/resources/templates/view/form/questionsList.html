@@ -3,29 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+
 </head>
 <body>
-<!--<form method="post" th:action="@{/readfile}">
-    <p>File name: <input name="fileName" type="text"> </p>
-</form>-->
 
-<form  th:action="@{/quiz}" th:object="${questions}"
-       method="post">
+<div class="table-users">
+    <div class="header">World country's capital quiz</div>
     <table>
+        <thead>
+        <tr>
+            <th>What is capital of ...?</th>
+            <th>User answer</th>
+        </tr>
+
+        </thead>
         <tbody>
+        <form  th:action="@{/quiz}" th:object="${questions}"
+               method="post">
         <tr th:each="quiz, itemStat : *{questionAndAnswers}">
             <p>
-                <input th:field="*{questionAndAnswers[__${itemStat.index}__].question}" th:readonly="${quiz.question}"/>
-                <input hidden th:field="*{questionAndAnswers[__${itemStat.index}__].solution}"
-                       th:value="${quiz.solution}" th:readonly="${quiz.solution}"/>
-                <input th:field="*{questionAndAnswers[__${itemStat.index}__].userAnswer}"
-                       th:value="${quiz.userAnswer}"/>            </p>
+               <td> <input th:field="*{questionAndAnswers[__${itemStat.index}__].question}" th:readonly="${quiz.question}"/></td>
+            <input hidden th:field="*{questionAndAnswers[__${itemStat.index}__].solution}"
+                       th:value="${quiz.solution}" th:readonly="${quiz.solution}"/> </td>
+            <td><input th:field="*{questionAndAnswers[__${itemStat.index}__].userAnswer}"
+                       th:value="${quiz.userAnswer}"/></td>
         </tr>
-        <input type="reset"/>
-        <input type="submit"/>
         </tbody>
     </table>
-
+    <input type="reset" value="Reset"/>
+    <input type="submit" value="Submit"/>
 </form>
 </body>
 </html>
