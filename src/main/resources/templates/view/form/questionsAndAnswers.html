@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<form method="post" th:action="@{/readfile}">
+    <p>File name: <input name="fileName" type="text"> </p>
+</form>-->
+
+
+    <table th:object="${question}">
+        <thead>
+        <tr>
+            <th>Capital city</th>
+            <th>Correct answer</th>
+            <th>User answer</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="quiz, itemStat : *{questionAndAnswers}">
+
+                <td  th:text="${quiz.question}"/>
+                <td  th:text="${quiz.solution}"/>
+                <td  th:text="${quiz.userAnswer}"/>
+        </tr>
+        </tbody>
+    </table>
+
+<p> Your result is <span th:text="${result}"></span></p>
+</form>
+</body>
+</html>

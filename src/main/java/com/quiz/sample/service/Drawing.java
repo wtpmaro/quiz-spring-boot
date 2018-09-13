@@ -1,6 +1,8 @@
 package com.quiz.sample.service;
 
 
+import com.quiz.sample.dto.QuestionAndAnswers;
+import com.quiz.sample.dto.QuestionListDto;
 import com.quiz.sample.entity.Questions;
 import com.quiz.sample.repository.QuestionsRepository;
 import org.aspectj.weaver.patterns.TypePatternQuestions;
@@ -30,5 +32,17 @@ public class Drawing {
             listAll.remove(drawnNumber);
         }
         return drawn;
+    }
+
+    public List<QuestionAndAnswers> dtoListCreation() {
+
+        List<Questions> drawnquestions = drawnquestions();
+
+        List<QuestionAndAnswers> list = new ArrayList<>();
+        for (int i =0; i < drawnquestions.size(); i++) {
+            list.add(new QuestionAndAnswers(drawnquestions.get(i).getQuestions(), drawnquestions.get(i).getAnswer(), ""));
+        }
+
+        return list;
     }
 }

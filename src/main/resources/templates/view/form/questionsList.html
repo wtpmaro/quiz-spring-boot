@@ -9,11 +9,22 @@
     <p>File name: <input name="fileName" type="text"> </p>
 </form>-->
 
-<form th:action="@{/quiz}" method="post">
-    <p th:each="question, iterStat : ${questions}">
-        <span th:text="${question.questions}" width="100px"></span><input type="text" name="myParam"/> </p>
-    <input type="submit">
-
+<form  th:action="@{/quiz}" th:object="${questions}"
+       method="post">
+    <table>
+        <tbody>
+        <tr th:each="quiz, itemStat : *{questionAndAnswers}">
+            <p>
+                <input th:field="*{questionAndAnswers[__${itemStat.index}__].question}" th:readonly="${quiz.question}"/>
+                <input hidden th:field="*{questionAndAnswers[__${itemStat.index}__].solution}"
+                       th:value="${quiz.solution}" th:readonly="${quiz.solution}"/>
+                <input th:field="*{questionAndAnswers[__${itemStat.index}__].userAnswer}"
+                       th:value="${quiz.userAnswer}"/>            </p>
+        </tr>
+        <input type="reset"/>
+        <input type="submit"/>
+        </tbody>
+    </table>
 
 </form>
 </body>
