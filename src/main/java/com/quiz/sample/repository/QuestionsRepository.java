@@ -7,5 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface QuestionsRepository extends JpaRepository<Questions, Long> {
-    Questions findFirstByQuestions(String answer);
+
+    Questions findFirstByQuestions(String question);
 }

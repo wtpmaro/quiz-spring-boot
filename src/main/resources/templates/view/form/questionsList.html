@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<form method="post" th:action="@{/readfile}">
+    <p>File name: <input name="fileName" type="text"> </p>
+</form>-->
+
+<form th:action="@{/quiz}" method="post">
+    <p th:each="question, iterStat : ${questions}">
+        <span th:text="${question.questions}" width="100px"></span><input type="text" name="myParam"/> </p>
+    <input type="submit">
+
+
+</form>
+</body>
+</html>

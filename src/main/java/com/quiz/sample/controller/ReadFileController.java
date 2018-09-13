@@ -37,7 +37,7 @@ public class ReadFileController {
 
     @GetMapping("")
     public String form() {
-        return "excelFileReader";
+        return "view/form/excelFileReader";
     }
 
     @PostMapping("")
