@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="table-users">
+    <div class="header">World country's capital quiz</div>
+
+    <table>
+        <thead>
+        <tr>
+            <th><h1>Menu</h1></th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><a class="link" th:href="@{/quiz}"><p>Quiz</p> </a></td>
+        </tr>
+        <tr>
+            <td><a class="link" th:href="@{/readfile}">Administration</a> </td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>
