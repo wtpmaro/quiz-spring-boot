@@ -16,10 +16,9 @@
         </tr>
         </thead>
         <tbody>
-        <tr><td>Write from which filename, you would like to upload questions.</td></tr>
-<tr><td><form method="post" th:action="@{/readfile}">
-  File name: <input name="fileName" type="text">
-</form></td></tr></tbody></table>
+<tr><td> File has not been found. Please try again.
+</td></tr></tbody></table>
+    <p class="score"><a th:href="@{/readfile}">Administration</a> </p>
     <p class="score"><a th:href="@{/}">Menu</a> </p>
 
 </body>

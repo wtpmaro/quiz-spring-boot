@@ -36,29 +36,21 @@ public class ReadFileController {
     }
 
     @PostMapping("")
-    @ResponseBody
     public String readExcelFile(@RequestParam String fileName) throws IOException, InvalidFormatException{
 
 
         try {
-
-
             List<String> list=  excelReader.readExcel(fileName);
-
             excelSave.saveExcel(list);
-
-            return "Zapisanie zakończone sukcesem";
+            return "view/form/excelFileSuccess";
 
         } catch (IOException e) {
             e.printStackTrace();
+            return "view/form/excelFileException";
 
-            throw new IOException (e);
         } catch (InvalidFormatException e) {
             e.printStackTrace();
-            throw new InvalidFormatException("To nie jest orawudłowy firna");
+            return "view/form/excelFileException";
         }
-
-
-
     }
 }

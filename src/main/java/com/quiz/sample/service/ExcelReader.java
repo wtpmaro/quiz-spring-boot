@@ -24,28 +24,15 @@ import static org.apache.poi.ss.usermodel.WorkbookFactory.*;
 public class ExcelReader {
 
 
-
-/*
-    QuestionsDto questions;
-*/
-
 @Autowired
 QuestionsRepository questionsRepository;
 
-    public Workbook workbook (String fileName) {
-        Workbook workbook = null;
-        try {
-            workbook = create (new File(fileName));
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InvalidFormatException e) {
-            e.printStackTrace();
-        }
-
+    public Workbook workbook (String fileName) throws IOException, InvalidFormatException {
+        Workbook workbook = create (new File(fileName));
         return workbook;
     }
 
-    public Sheet sheet (String filename) {
+    public Sheet sheet (String filename) throws IOException, InvalidFormatException {
         Sheet sheet = workbook(filename).getSheetAt(0);
         return sheet;
     }

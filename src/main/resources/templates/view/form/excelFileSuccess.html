@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <title>World country's capital</title>
 </head>
-<body>
+<div>
 <div class="table-users">
     <div class="header">World country's capital quiz</div>
     <table>
@@ -16,11 +16,11 @@
         </tr>
         </thead>
         <tbody>
-        <tr><td>Write from which filename, you would like to upload questions.</td></tr>
-<tr><td><form method="post" th:action="@{/readfile}">
-  File name: <input name="fileName" type="text">
-</form></td></tr></tbody></table>
+<tr><td> Questions have been uploaded correctly.
+</td></tr></tbody></table>
+    <p class="score"><a th:href="@{/readfile}">Administration</a> </p>
     <p class="score"><a th:href="@{/}">Menu</a> </p>
-
+</div>
+</div>
 </body>
 </html>
